@@ -1,0 +1,75 @@
+.row:first-of-type {
+    margin-top: 1rem;
+}
+
+.product-container {
+    display: flex;
+}
+
+.product-image {
+    width: 30%;
+}
+
+.product-summary {
+    width: 70%;
+}
+
+.location-container {
+    overflow: hidden;
+}
+
+.row {
+    margin: 0;
+}
+
+.location-option {
+    color: blue;
+    cursor: pointer;
+}
+
+form {
+    overflow: hidden;
+}
+
+.form-row {
+    margin-bottom: 1rem;
+}
+
+.something {
+    background-color: green;
+}
+
+.location-result {
+    overflow: hidden;
+}
+
+.review-form {
+    width: 100%;
+    padding: 2rem;
+}
+
+.rating-option {
+    margin-bottom: 1rem;
+}
+
+.star-option {
+    position: relative;
+    display: inline-block;
+}
+
+.star-option-left {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+}
+
+.star-option-right {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    z-index: 0;    
+}

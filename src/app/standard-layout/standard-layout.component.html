@@ -1,0 +1,20 @@
+<div class="side-nav">
+    <app-sidenav></app-sidenav>
+</div>
+<div class="show-nav" (click)="showProductNav = !showProductNav">
+    <div>
+        Product Navigation
+    </div>
+    <div class="float-right">
+        <i class="fa fa-plus"></i>
+    </div>
+</div>
+<!-- <div class="new-nav-container"> -->
+    <!-- <div class="new-nav" *ngIf="showProductNav" @slideState> -->
+    <div class="new-nav" *ngIf="showProductNav" @slideState>
+        <app-sidenav></app-sidenav>
+    </div>
+<!-- </div> -->
+<div class="main-content-container">
+    <router-outlet></router-outlet>
+</div>

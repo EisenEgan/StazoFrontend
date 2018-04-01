@@ -1,0 +1,30 @@
+<div class="col-lg-8 offset-lg-2 col-md-12">
+    <form [formGroup]="signinForm" (ngSubmit)="signIn()">
+      <div class="form-group">
+        <label for="emailInput">Email Address/Username</label>
+        <input type="text" class="form-control" [ngClass]="{'is-invalid': signinForm.get('emailOrUsername').errors && signinForm.get('emailOrUsername').touched}"
+          id="emailInput" formControlName="emailOrUsername" placeholder="Email Address">
+        <div class="invalid-feedback" *ngIf="signinForm.get('emailOrUsername').hasError('required') && signinForm.get('emailOrUsername').touched">
+          Please enter your email or username
+        </div>
+        <div class="invalid-feedback" *ngIf="!signinForm.get('emailOrUsername').hasError('required') && signinForm.get('emailOrUsername').hasError('minlength')
+        && signinForm.get('emailOrUsername').touched">
+          Please enter an email or username with more than 4 characters
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" [ngClass]="{'is-invalid': signinForm.get('password').errors && signinForm.get('password').touched}"
+          id="exampleInputPassword1" formControlName="password" placeholder="Password">
+        <div class="invalid-feedback" *ngIf="signinForm.get('password').hasError('required') && signinForm.get('password').touched">
+          Please enter a password
+        </div>
+        <div class="invalid-feedback" *ngIf="!signinForm.get('password').hasError('required') &&
+        (signinForm.get('password').hasError('minlength') || signinForm.get('password').hasError('maxlength'))
+        && signinForm.get('password').touched">
+          Password must be between 4 and 10 characters
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+  </div>

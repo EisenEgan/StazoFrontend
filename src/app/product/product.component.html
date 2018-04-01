@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-lg-4">
+    <div class="product-info-container">
+      <!-- <img class="product-image" src="{{ product.photoUrl }}"> -->
+      <div class="img" [ngStyle]="{'background-image': 'url(' + product.photoUrl + ')'}"></div>   
+      <div class="product-info">
+        Name: {{ product.name }}<br>
+        Brand: <a href="#">{{ product.brandName }}</a><br>
+        Category: <a href="#">{{ product.categoryName }}</a><br>
+        Rating: <app-rating [rating]="product.starRating" ></app-rating>
+        <div class="average-rating">
+          (average {{ product.starRating }} stars)
+        </div>
+        {{ product.market }} Item
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="reviews-container">
+      <h3>Reviews</h3>
+      <app-review [review]="review" [reviewType]="'product'"></app-review>
+      <app-review [review]="review" [reviewType]="'product'"></app-review>
+    </div>
+    <div class="btn-container">
+      <button class="btn btn-primary float-right add-btn">Add Review</button>
+      <div style="clear: both;"></div>
+    </div>
+  </div>
+</div>

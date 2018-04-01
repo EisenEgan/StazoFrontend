@@ -1,0 +1,54 @@
+<h4>Change User Avatar</h4>
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+    <div class="current-user-avatar-container">
+      <img class="current-user-avatar" src="http://autowpaper.com/images/lamborghini-aventador-dragon-edition-purple-1.jpg">
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <form [formGroup]="avatarForm" (ngSubmit)="changeAvatar()">
+      <div class="form-group">
+        <label for="imageUrl">Image Url</label>
+        <input type="text" class="form-control" placeholder="Image Url" formControlName="imageUrl">
+      </div>
+      OR:
+      <br>
+      <label for="image">Upload Image</label>
+      <div class="form-group">
+        <input type="file" id="image" (change)="onFileChange($event)" #fileInput>
+        <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">Remove Image</button>
+        <br>
+        <span class="invalid-feedback" *ngIf="(avatarForm.get('imageUrl').touched || fileUploaded)
+        && avatarForm.hasError('bothFilled')">
+          Only one image source can be provided.
+        </span>
+        <span class="invalid-feedback" *ngIf="(avatarForm.get('imageUrl').touched || fileUploaded)
+        && avatarForm.hasError('neitherFilled')">
+          An image source must be provided.
+        </span>
+      </div>
+      <button class="btn btn-primary" [disabled]="!avatarForm.valid" type="submit">Create</button>
+    </form>
+  </div>
+</div>
+<h4>Change Background Photo</h4>
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let item of Arr(5).fill(1); let i = index">
+    <div class="img-container" [ngClass]="{'active-img': backgroundIndex == i}" (click)="makeBackground(i)">
+      <div class="img" [ngStyle]="{'background-image': 'url(' + picture + ')'}"></div>
+    </div>
+  </div>
+  <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="img-container" (click)="">
+      <div class="img" [ngStyle]="{'background-image': 'url(' + picture + ')'}"></div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="img-container">
+      <div class="img" [ngStyle]="{'background-image': 'url(' + picture + ')'}"></div>
+    </div>
+  </div> -->
+  <!-- <div class="col-sm-4">
+    herp
+  </div> -->
+</div>

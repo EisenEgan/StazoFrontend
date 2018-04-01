@@ -1,0 +1,39 @@
+.current-user-avatar-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.current-user-avatar {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+.img {
+    z-index: 0;
+    position: relative;
+    height: 150px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img-container {
+    margin-bottom: 1rem;
+    border: 3px solid white;
+}
+
+.active-img {
+    border: 3px solid #19e545;
+}
+
+h4 {
+    text-align: center;
+    margin: .5rem;
+}

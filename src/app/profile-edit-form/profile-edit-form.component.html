@@ -1,0 +1,118 @@
+<form [formGroup]="profileEditForm" (ngSubmit)="editProfile()">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email Address</label>
+    <input type="email" class="form-control" [ngClass]="{'is-invalid': profileEditForm.get('email').errors && profileEditForm.get('email').touched}"
+      id="exampleInputEmail1" formControlName="email" placeholder="Email Address">
+    <div class="invalid-feedback" *ngIf="profileEditForm.get('email').hasError('required') && profileEditForm.get('email').touched">
+      Please enter an email
+    </div>
+    <div class="invalid-feedback" *ngIf="!profileEditForm.get('email').hasError('required') && profileEditForm.get('email').hasError('email') && profileEditForm.get('email').touched">
+      Please enter a valid email
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="firstNameInput">First Name</label>
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': profileEditForm.get('firstName').errors && profileEditForm.get('firstName').touched}"
+        id="firstNameInput" formControlName="firstName" placeholder="First Name">
+      <div class="invalid-feedback" *ngIf="profileEditForm.get('firstName').hasError('required') && profileEditForm.get('firstName').touched">
+        Please enter a first name
+      </div>
+      <div class="invalid-feedback" *ngIf="!profileEditForm.get('firstName').hasError('required') && profileEditForm.get('firstName').hasError('minlength') && profileEditForm.get('firstName').touched">
+        First name must be at least 2 characters
+      </div>
+    </div>
+    <div class="col">
+      <label for="lastNameInput">Last Name</label>
+      <input type="text" class="form-control" [ngClass]="{'is-invalid': profileEditForm.get('lastName').errors && profileEditForm.get('lastName').touched}"
+        id="lastNameInput" formControlName="lastName" placeholder="Last Name">
+      <div class="invalid-feedback" *ngIf="profileEditForm.get('lastName').hasError('required') && profileEditForm.get('lastName').touched">
+        Please enter a last name
+      </div>
+      <div class="invalid-feedback" *ngIf="!profileEditForm.get('lastName').hasError('required') && profileEditForm.get('lastName').hasError('minlength') && profileEditForm.get('lastName').touched">
+        Last name must be at least 2 characters
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="zip">Zip Code</label>
+    <input type="text" class="form-control" [ngClass]="{'is-invalid': profileEditForm.get('zip').errors && profileEditForm.get('zip').touched}"
+    id="exampleInputPassword1" formControlName="zip" placeholder="Zip Code" (keyup)="checkZip()">
+    <div class="invalid-feedback" *ngIf="profileEditForm.get('zip').hasError('required') && profileEditForm.get('zip').touched">
+      Please enter your zip code
+    </div>
+    <div class="invalid-feedback" *ngIf="!profileEditForm.get('zip').hasError('required') && profileEditForm.get('zip').touched
+    && profileEditForm.get('zip').hasError('pattern')">
+      Your zip code must consist of 5 digits
+    </div>
+    <div class="invalid-feedback" *ngIf="!profileEditForm.get('zip').hasError('required') && profileEditForm.get('zip').touched
+    && !profileEditForm.get('zip').hasError('pattern') && profileEditForm.get('zip').errors && profileEditForm.get('zip').hasError('invalidZip')">
+      Invalid Zip
+    </div>
+    <div class="form-text text-muted" *ngIf="place">
+      ah... {{ place }}
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Change Info</button>
+</form>
+<form [formGroup]="passwordEditForm" (ngSubmit)="changePassword()">
+  <!-- <div class="form-group">
+    <label for="exampleInputEmail1">First Name</label>
+    <input type="email" class="form-control" [ngClass]="{'is-invalid': profileEditForm.get('email').errors && profileEditForm.get('email').touched}"
+      id="exampleInputEmail1" formControlName="email" placeholder="Email Address">
+    <div class="invalid-feedback" *ngIf="profileEditForm.get('email').hasError('required') && profileEditForm.get('email').touched">
+      Please enter an email
+    </div>
+    <div class="invalid-feedback" *ngIf="!profileEditForm.get('email').hasError('required') && profileEditForm.get('email').hasError('email') && profileEditForm.get('email').touched">
+      Please enter a valid email
+    </div>
+  </div> -->
+  <!-- <div class="form-group">
+    <label for="exampleInputEmail1">Last Name</label>
+    <input type="email" class="form-control" [ngClass]="{'is-invalid': profileEditForm.get('email').errors && profileEditForm.get('email').touched}"
+      id="exampleInputEmail1" formControlName="email" placeholder="Email Address">
+    <div class="invalid-feedback" *ngIf="profileEditForm.get('email').hasError('required') && profileEditForm.get('email').touched">
+      Please enter an email
+    </div>
+    <div class="invalid-feedback" *ngIf="!profileEditForm.get('email').hasError('required') && profileEditForm.get('email').hasError('email') && profileEditForm.get('email').touched">
+      Please enter a valid email
+    </div>
+  </div> -->
+  <div class="form-group">
+    <label for="exampleInputPassword1">Old Password</label>
+    <input type="password" class="form-control" [ngClass]="{'is-invalid': profileEditForm.get('oldPassword').errors && profileEditForm.get('oldPassword').touched}"
+    id="exampleInputPassword1" formControlName="password" placeholder="Old Password">
+    <div class="invalid-feedback" *ngIf="profileEditForm.get('oldPassword').hasError('required') && profileEditForm.get('oldPassword').touched">
+      Please enter your old password
+    </div>
+    <div class="invalid-feedback" *ngIf="!profileEditForm.get('oldPassword').hasError('required') &&
+    (profileEditForm.get('oldPassword').hasError('minlength') || profileEditForm.get('oldPassword').hasError('maxlength')) && profileEditForm.get('oldPassword').touched">
+      Please enter your old password which was between 4 and 10 characters
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">New Password</label>
+    <input type="password" class="form-control" [ngClass]="{'is-invalid': profileEditForm.get('password').errors && profileEditForm.get('password').touched}"
+    id="exampleInputPassword1" formControlName="password" placeholder="New Password">
+    <div class="invalid-feedback" *ngIf="profileEditForm.get('password').hasError('required') && profileEditForm.get('password').touched">
+      Please enter a new password
+    </div>
+    <div class="invalid-feedback" *ngIf="!profileEditForm.get('password').hasError('required') &&
+    (profileEditForm.get('password').hasError('minlength') || profileEditForm.get('password').hasError('maxlength')) && profileEditForm.get('password').touched">
+      Please enter a new password between 4 and 10 characters
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword2">Confirm New Password</label>
+    <input type="password" class="form-control" [ngClass]="{'is-invalid': (profileEditForm.get('confirmPassword').errors || profileEditForm.hasError('mismatch')) && profileEditForm.get('confirmPassword').touched}"
+    id="exampleInputPassword2" formControlName="confirmPassword" placeholder="Confirm New Password">
+    <div class="invalid-feedback" *ngIf="profileEditForm.get('confirmPassword').hasError('required') && profileEditForm.get('confirmPassword').touched">
+      Please confirm your new password
+    </div>
+    <div class="invalid-feedback" *ngIf="!profileEditForm.get('confirmPassword').hasError('required') && profileEditForm.get('confirmPassword').touched &&
+    profileEditForm.hasError('mismatch')">
+      Confirm new password must match new password
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Change Password</button>
+</form>

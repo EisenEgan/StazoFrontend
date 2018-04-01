@@ -1,0 +1,112 @@
+<!-- <ul class="flex-column-container">
+  <li routerLinkActive="active">
+    <a class="nav-option-link" [routerLink]="['']">Products</a>
+  </li>
+  <li class="non-link">
+    <div class="clickable" (click)="showCategories = !showCategories">
+      <div>
+        By Categories
+      </div>
+      <div class="float-right">
+        <i class="fa fa-plus"></i>
+      </div>
+    </div>
+    <div class="dropdown-list-container"
+    >
+      <div class="dropdown-list"
+        *ngIf="showCategories"
+        @slideState
+      >
+          <ul class="sub-flex-column-container"
+          
+        >
+          <li>
+            <a class="nav-option-link" [routerLink]="['']">Frozen</a>
+          </li>
+          <li>
+            <a class="nav-option-link" [routerLink]="['']">Baked Goods</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </li>
+  <div class="remaining-list" [@remainingList]="showCategories ? 'slideDown' : 'slideUp'">
+    <li class="non-link">
+      <div class="clickable" (click)="showReviews = !showReviews">
+        <div>
+          By Reviews
+        </div>
+        <div class="float-right">
+          <i class="fa fa-plus"></i>
+        </div>
+      </div>
+      <div class="dropdown-list-container">
+        <ul class="sub-flex-column-container"
+          *ngIf="showReviews"
+          @slideState
+        >
+          <li>
+            <a class="nav-option-link" [routerLink]="['']">Most Reviewed</a>
+          </li>
+          <li>
+            <a class="nav-option-link" [routerLink]="['']">Highest Rated</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <div class="remaining-list" 
+      [@remainingList]="showReviews ? 'slideDown' : 'slideUp'"
+    >
+      <li>
+        <a class="nav-option-link" [routerLink]="['']">Users</a>
+      </li>
+      <li>
+        <a class="nav-option-link" [routerLink]="['']">Locations</a>
+      </li>
+    </div>
+  </div>
+</ul> -->
+<!-- to do create a simpler version of the dropdown menu probably using
+divs instead of ul/li elements to test animations.
+-->
+<div class="sidenav-container">
+  <div class="item">
+      <a class="nav-option-link" [routerLink]="['']">Products</a>
+  </div>
+  <!-- <div class="item" (click)="showCategories = !showCategories">
+    Item 1
+  </div> -->
+  <div class="clickable" (click)="showCategories = !showCategories">
+    <div>
+      By Categories
+    </div>
+    <div class="float-right">
+      <i class="fa fa-plus"></i>
+    </div>
+  </div>
+  <div class="hidden-container">
+    <div class="hidden" *ngIf="showCategories" @slideState>
+      <a class="nav-option-link" [routerLink]="['/category/' + formatSlug(category.name)]" *ngFor="let category of categories">{{ category.name }}</a>
+    </div>
+  </div>
+  <div class="clickable" (click)="showReviews = !showReviews">
+    <div>
+      By Reviews
+    </div>
+    <div class="float-right">
+      <i class="fa fa-plus"></i>
+    </div>
+  </div>
+  <div class="hidden-container">
+    <div class="hidden" *ngIf="showReviews" @slideState>
+      <a class="nav-option-link" [routerLink]="['/reviews/most']">Most Reviewed</a>   
+      <a class="nav-option-link" [routerLink]="['/reviews/highest']">Highest Rated</a>         
+    </div>
+  </div>
+  <div class="item">
+    <a class="nav-option-link" [routerLink]="['/users']">Users</a>
+  </div>
+  <div class="item">
+    <a class="nav-option-link" [routerLink]="['/locations']">Locations</a>
+  </div>
+</div>

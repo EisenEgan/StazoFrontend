@@ -1,0 +1,92 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="product-container">
+      <img class="product-image" src="{{ product.photoUrl }}">
+      <div class="product-summary">
+        Name: {{ product.name }}<br>
+        Brand: {{ product.brandName }}<br>
+        Rating: <app-rating [rating]="product.starRating"></app-rating>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="location-container" *ngIf="!locationSubmitted" @slideState>
+      Find Location:<br>
+      <div class="location-option" (click)="showOption('zip')">
+        Zip
+      </div>
+      <form (ngSubmit)="submitZip(zipForm)" #zipForm="ngForm" *ngIf="zipClicked" @slideState>
+        <div class="form-group">
+          <input type="text" class="form-control" name="zip" required
+          [(ngModel)]="zipCode" id="zipCode" pattern="^\d{5}$"
+          placeholder="Zip Code">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div class="location-option" (click)="showOption('city')">
+        City
+      </div>
+      <form (ngSubmit)="submitCity(cityForm)" #cityForm="ngForm" *ngIf="cityClicked" @slideState>
+        <div class="form-row">
+          <div class="col">
+            <input type="text" class="form-control" name="city" required
+            [(ngModel)]="address.city" id="cityInput" placeholder="City">
+          </div>
+          <div class="col">
+            <select required class="form-control" [(ngModel)]="address.state" name="state" required>
+              <option *ngFor="let state of states" [ngValue]="state">{{ state }}</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div class="location-result" *ngIf="valid && results.length == 0" @slideState>
+        <div>No Results found</div>
+        <a href="#">Location not found? Add new location</a>
+      </div>
+      <div class="location-result" *ngIf="valid && results.length" @slideState>
+        <form (ngSubmit)="submitResult(resultForm)" #resultForm="ngForm">
+          <div class="form-group">
+            <select class="form-control" [(ngModel)]="location" name="state" required>
+              <option *ngFor="let result of results" [ngValue]="result">{{ result.name + " - " + result.address }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <a href="#">Location not found? Add new location</a>
+      </div>
+    </div>
+    <div class="location" *ngIf="locationSubmitted">
+      {{ location.name }}<br>
+      {{ location.address }}<br>
+      {{ location.city }}, {{ location.state }} {{ location.zip }}<br>
+      <div class="location-option" (click)="reset()">
+        Chose the wrong location? Click to go back.
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <form class="review-form" (ngSubmit)="submitReview(reviewForm)" #reviewForm="ngForm">
+    <div class="form-group">
+      <label for="reviewText">Review Text</label>
+      <textarea type="text" class="form-control" [(ngModel)]="review.text" name="reviewText"
+        id="reviewText" placeholder="Review item here"></textarea>
+      <!-- <div class="invalid-feedback" *ngIf="profileEditForm.get('email').hasError('required') && profileEditForm.get('email').touched">
+        Please enter an email
+      </div>
+      <div class="invalid-feedback" *ngIf="!profileEditForm.get('email').hasError('required') && profileEditForm.get('email').hasError('email') && profileEditForm.get('email').touched">
+        Please enter a valid email
+      </div> -->
+    </div>
+    <label for="reviewText">Rating</label>
+    <div class="rating-option">
+      <div class="star-option" *ngFor="let star of Arr(5).fill(1); let i = index">
+        <i class="fa" [ngClass]="{'fa-star-o': review.rating<=i, 'fa-star-half-o': (review.rating-i)==.5, 'fa-star': review.rating>=i}"></i>
+        <div class="star-option-left" (click)="selectRating(i+.5)"></div>
+        <div class="star-option-right" (click)="selectRating(i+1)"></div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Review</button>
+  </form>
+</div>

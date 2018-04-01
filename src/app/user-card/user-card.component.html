@@ -1,0 +1,28 @@
+<div class="card-container">
+  <a [routerLink]="['/profile/' + user.username.toLowerCase()]">
+    <div class="img" [ngStyle]="{'background-image': 'url(' + getUserBackground(user.backgroundUrl) + ')'}"></div>
+  </a>
+  <div class="user-details-container">
+    <a [routerLink]="['/profile/' + user.username.toLowerCase()]">
+      <div class="user-avatar" [ngStyle]="{'background-image': 'url(' + getUserAvatar(user.avatarUrl) + ')'}"></div>
+    </a>
+  </div>
+  <div class="user-details">
+    <div class="user-details-username">
+      <a [routerLink]="['/profile/' + user.username.toLowerCase()]" routerLinkActive="router-link-active"  class="username-link">
+        {{ user.username }}
+      </a>
+    </div>
+    <div class="user-details-other">
+      <div class="user-details-reviews">
+        Reviews:<br>
+        {{ user.reviewCount }}
+      </div>
+      <div class="user-details-active">
+        Last Active:<br>
+        {{ user.lastActive | timeAgo }}
+      </div>
+    </div>
+  </div>
+
+</div>

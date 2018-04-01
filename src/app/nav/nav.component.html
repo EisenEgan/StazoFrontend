@@ -1,0 +1,82 @@
+<nav class="navbar navbar-dark sticky-top flex-md-nowrap p-0" [ngClass]="{'bg-dark': market == 'grocery', 'farmer-background': market == 'farmers'}">
+  <!-- <a class="navbar-brand col-sm-3 col-md-2 mr-0" [routerLink]="['/']">Stazo</a> -->
+  <a class="navbar-brand mr-0" [routerLink]="['']">Stazo</a>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <div class="nav-link" (click)="changeMarket()">{{ market == "grocery" ? "Farmer's Markets" : "Grocery" }}</div>
+    </li>
+    <li class="nav-item" routerLinkActive="active" *ngIf="!loggedIn()">
+      <a class="nav-link" [routerLink]="['/signin']">Sign in</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" *ngIf="!loggedIn()">
+      <a class="nav-link" [routerLink]="['/register']">Register</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" *ngIf="loggedIn()">
+      <div class="nav-link" (click)="logout()">Logout</div>
+    </li>
+  </ul>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" href="#">Stazo</a>
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+      &#9776;
+    </button>
+    <div class="collapse navbar-collapse" id="exCollapsingNavbar">
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a [routerLink]="['/register']" routerLinkActive="active" class="nav-link">Register</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Link</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Service</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">More</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav flex-row justify-content-right ml-auto" *ngIf="loggedIn()">
+        <li class="nav-item order-2 order-md-1" (click)="logout()">
+          <a href="#" class="nav-link">
+            Logout
+          </a>
+        </li>
+        <li class="nav-item order-2 order-md-1">
+          <a href="#" class="nav-link">
+            Hello {{ getName() }}
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav flex-row justify-content-between ml-auto" *ngIf="!loggedIn()">
+        <li class="dropdown order-1">
+          <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Login
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right mt-1">
+            <li class="p-3">
+              <form #loginForm="ngForm" class="form" role="form" (ngSubmit)="login()">
+                <div class="form-group">
+                  <input placeholder="Email" class="form-control form-control-sm" type="text" required name="email" [(ngModel)]="model.email">
+                </div>
+                <div class="form-group">
+                  <input placeholder="Password" class="form-control form-control-sm" type="password" required name="password" [(ngModel)]="model.password">
+                </div>
+                <div class="form-group">
+                  <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block">Login</button>
+                </div>
+                <div class="form-group text-xs-center">
+                  <small>
+                    <a href="#">Forgot password?</a>
+                  </small>
+                </div>
+              </form>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->

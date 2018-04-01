@@ -1,0 +1,37 @@
+<!-- <div class="side-nav">
+  <app-sidenav></app-sidenav>
+</div> -->
+<!-- <div class="main-content-container"> -->
+  <div class="option-content">
+    <form>
+      <div class="search-container">
+        <div class="search-input">
+          <label class="sr-only" for="productSearch">Search For {{ page == 'home' || page == 'category' || page == 'review' ? 'Product' : page == 'users' ? 'Users' : 'Locations' }}</label>
+          <input type="text" class="form-control" id="productSearch" [(ngModel)]="queryString" name="queryString"
+          [placeholder]="page == 'home' || page == 'category' || page == 'review' ? 'Search Products' : page == 'users' ? 'Search Users' : 'Search Locations'">
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+    <div class="float-right" *ngIf="page == 'home' || page == 'locations' || page == 'category' || page == 'review'">
+      <a [routerLink]="['/product/add']" class="add-product-link" *ngIf="page == 'home' || page == 'category' || page == 'review'"><i class="fa fa-plus"></i>  Add Product</a>
+      <a [routerLink]="['/location/add']" class="add-product-link" *ngIf="page == 'locations'"><i class="fa fa-plus"></i>  Add Location</a>
+    </div>
+  </div>
+  <div class="main-content" [@listAnimation]="results.length">
+    <ng-container *ngIf="page == 'home' || page == 'category' || page == 'review'" >
+      <app-card [product]="product" *ngFor="let product of results | FilterPipe: queryString: searchableList"></app-card>
+    </ng-container>
+    <ng-container *ngIf="page == 'locations'">
+      <app-card [location]="location" *ngFor="let location of results | FilterPipe: queryString: searchableList"></app-card>
+    </ng-container>
+    <ng-container *ngIf="page == 'users'">    
+      <app-user-card [user]="user" *ngFor="let user of results | FilterPipe: queryString: searchableList"></app-user-card>
+    </ng-container>
+  </div>
+  <div class="no-results-container" *ngIf="resultsLoaded && results.length == 0">
+    No Results Found
+  </div>
+<!-- </div> -->

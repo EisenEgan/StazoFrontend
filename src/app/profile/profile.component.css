@@ -1,0 +1,121 @@
+.img {
+    z-index: 0;
+    position: relative;
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.avatar-container {
+    position: relative;
+}
+
+.user-avatar {
+    position: absolute;
+    border-radius: 50%;
+    top: -100px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.reviews-and-activity {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    /* align-content: center; */
+}
+
+.photo-space {
+    width: 200px;
+}
+
+.reviews,
+.last-active {
+    font-size: 20px;
+    text-align: center;
+    flex: 1;
+    /* padding: 1rem 0; */
+}
+
+.username {
+    font-size: 24px;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.reviews-container {
+    margin: 1rem;
+    background-color: #e8e8e8;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+}
+
+.reviews-container h3 {
+    text-align: center;
+    margin: .5rem 0;
+}
+
+.no-reviews-header {
+    padding: 2rem;
+}
+/* @media(max-width: 768px) {
+    .option-content {
+        margin: .5rem 1rem;
+    }
+
+    .main-content {
+        margin: 0;
+    }
+} */
+
+@media(max-width: 992px) {
+    .user-avatar {
+        top: -75px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .reviews-and-activity {
+        height: 75px;
+    }
+
+    .photo-space {
+        width: 150px;
+    }
+}
+
+@media(max-width: 576px) {
+    .reviews-container {
+        margin: .5rem;
+    }
+
+    .img {
+        height: 150px;
+    }
+
+    .user-avatar {
+        top: -50px;
+        width: 100px;
+        height: 100px;
+        border-radius: 2px solid green;
+    }
+
+    .reviews-and-activity {
+        height: 50px;
+    }
+
+    .photo-space {
+        width: 100px;
+    }
+
+    .reviews,
+    .last-active {
+        font-size: 16px;
+    }
+}

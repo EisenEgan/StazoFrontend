@@ -1,0 +1,84 @@
+:host {
+    width: 33%;
+    height: auto;
+}
+
+.card-container {
+    margin: .5rem;
+    background-color: #e8e8e8;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.img {
+    z-index: 0;
+    position: relative;
+    height: 120px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.user-details-container {
+    position: relative;
+}
+
+.user-avatar {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    height: 100px;
+    width: 100px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    border: 1px solid #e8e8e8;
+}
+
+.user-details {
+    margin-top: 60px;
+}
+
+.user-details-username {
+    font-size: 20px;
+    text-align: center;
+    margin: .5rem;
+}
+
+.username-link {
+    color: #5e5e5e;
+    text-decoration: none;
+}
+
+.user-details-other {
+    display: flex;
+}
+
+.user-details-other div {
+    width: 50%;
+    text-align: center;
+    padding: .5rem;
+}
+
+@media(max-width: 767.98px) {
+    :host {
+        width: 100%;
+    }
+
+    /* .img {
+        height: 250px;
+    } */
+}
+
+@media(min-width: 768px) and (max-width: 991.98px) {
+    :host {
+        width: 50%;
+    }
+}

@@ -1,0 +1,31 @@
+<div class="card-container">
+  <div class="new-tag" *ngIf="new">New</div>
+  <a [routerLink]="['/product/' + formatSlug(product.brandName) + '/' + formatSlug(product.name)]"
+  class="image-link" *ngIf="product">
+    <div class="img" [ngStyle]="{'background-image': 'url(' + product.photoUrl + ')'}" *ngIf="product"></div>
+  </a>
+  <a [routerLink]="['/location/' + location.id]" class="image-link" *ngIf="location">
+    <div class="img" [ngStyle]="{'background-image': 'url(' + location.photoUrl + ')'}" *ngIf="location"></div>
+  </a>
+  <div class="card-description">
+    <h2>{{ product ? product.name : (location ? location?.name : '') }}</h2>
+    <div class="brand-and-rating" *ngIf="product">
+      <div class="brand">
+        <h4>{{ product.brandName }}</h4>
+      </div>
+      <div class="rating">
+        <app-rating [rating]="product.starRating"></app-rating>
+      </div>
+    </div>
+    <div class="address" *ngIf="location">
+      {{ location.address }}<br>
+      {{ location.city }}, {{ location.state }} {{ location.zip }}
+    </div>
+  </div>
+  <div class="more-details">
+    <a class="more-details-link" [routerLink]="['/product/' + formatSlug(product.brandName) + '/' + formatSlug(product.name)]"
+    *ngIf="product">More Details</a>
+    <a class="more-details-link" [routerLink]="['/location/' + location.id]"
+    *ngIf="location">More Details</a>
+  </div>
+</div>

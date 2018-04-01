@@ -1,0 +1,29 @@
+:host {
+    padding: 1rem;
+}
+
+.nav.nav-tabs {
+    margin: 0 1rem;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.content-container {
+    margin: 0 1rem;
+    /* border: 1px solid #FDFDFD; */
+    padding: 0 1rem;
+}
+
+@media(max-width: 576px) {
+    .nav.nav-tabs {
+        margin: 0 .2rem;
+        font-size: 15px;
+    }
+
+    .content-container {
+        margin: 0 .2rem;
+        padding: 0 .2rem;
+    }
+}

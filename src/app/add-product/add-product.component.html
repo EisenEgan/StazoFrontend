@@ -1,0 +1,48 @@
+<div class="col-lg-8 offset-lg-2 col-md-12">
+  <form class="product-form" [formGroup]="addProductForm" (ngSubmit)="addProduct()">
+    <div class="form-group">
+      <label for="categorySelect">Category</label>
+      <select class="form-control" id="categorySelect" formControlName="categoryId" name="category">
+        <option [ngValue]="''" disabled="disabled">-- Select Category --</option>
+        <option *ngFor="let category of categories" [ngValue]="category.id">{{ category.categoryName }}</option>
+      </select>
+      <div class="invalid-feedback" *ngIf="addProductForm.get('categoryId').hasError('required') && addProductForm.get('categoryId').touched">
+        Please enter an category
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="brandInput">Brand Name</label>
+      <input type="text" ng2-auto-complete class="form-control" id="brandInput" 
+      formControlName="brand" [source]="brands" [list-formatter]="autocompleListFormatter"
+      value-property-name="name" select-value-of="name" display-property-name="name" placeholder="Brand">
+      <div class="invalid-feedback" *ngIf="addProductForm.get('brand').hasError('required') && addProductForm.get('brand').touched">
+        Please enter a brand
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nameInput">Product Name</label>
+      <input type="text" class="form-control" id="nameInput" 
+      formControlName="name" placeholder="Name">
+      <div class="invalid-feedback" *ngIf="addProductForm.get('name').hasError('required') && addProductForm.get('name').touched">
+        Please enter a product name
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="photoUrlInput">Photo Url</label>
+      <input type="text" class="form-control" id="photoUrlInput" 
+      formControlName="photoUrl" placeholder="Photo Url">
+      <div class="invalid-feedback" *ngIf="addProductForm.get('photoUrl').hasError('required') && addProductForm.get('photoUrl').touched">
+        Please enter a photo URL
+      </div>
+      <div class="invalid-feedback" *ngIf="addProductForm.get('photoUrl').hasError('pattern') && addProductForm.get('photoUrl').touched">
+        Please enter a valid photo URL
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Found</label><br>
+      <input formControlName="market" value="Grocery" name="market" type="radio" checked="checked"> Grocery&nbsp;&nbsp;&nbsp;
+      <input formControlName="market" value="Farmers" name="market" type="radio"> Farmer's Market
+    </div>
+    <button type="submit" class="btn btn-primary">Add Product</button>
+  </form>
+</div>

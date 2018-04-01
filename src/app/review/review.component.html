@@ -1,0 +1,42 @@
+<div class="product-info" *ngIf="reviewType == 'location' || reviewType == 'both'">
+  <div class="product-name">
+    {{ review.product.brandName }} {{ review.product.name }}
+  </div>
+  <div class="product-image-container"> 
+    <a class="product-image-link" href="#">
+      <img class="product-image" src="{{ review.product.photoUrl }}">
+    </a>
+  </div>
+</div>
+<div class="review-container">
+  <div class="user-info">
+    <div class="user-avatar-container">
+      <a class="user-avatar-link" href="#">
+        <img class="user-avatar" src="{{ review.user.avatarUrl }}">
+      </a>
+    </div>
+    <div class="user-username">
+      <a href="#">
+        {{ review.user.email }}
+      </a>
+    </div>
+    <div class="review-created">
+      {{ review.createdAt | timeAgo }}
+    </div>
+  </div>
+  <div class="star-score">
+    <app-rating [rating]="review.starScore"></app-rating>
+  </div>
+  <div class="review-text">
+    {{ review.text }}
+  </div>
+  <div class="location-details" *ngIf="reviewType == 'product' || reviewType == 'both'">
+    Bought at {{ review.location.name }} in {{ review.location.city }}, {{ review.location.state }}
+  </div>
+  <!-- <div class="product-details" *ngIf="reviewType == 'location'">
+    
+  </div> -->
+  <div class="likes">
+    <i class="fa fa-thumbs-up"></i> {{ review.likes }} <i class="fa fa-thumbs-down"></i>
+  </div>
+</div>

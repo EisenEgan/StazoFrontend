@@ -1,0 +1,14 @@
+:host {
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+}
+
+.form-check {
+    margin-bottom: 10px;
+}
+
+.invalid-feedback {
+    display: block;
+}
+  

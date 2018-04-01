@@ -1,0 +1,111 @@
+:host {
+    width: 33.33333%;
+    height: auto;
+}
+
+.card-container {
+    margin: .5rem;
+    background-color: #e8e8e8;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.new-tag {
+    top: -.3rem;
+    left: -3rem;
+    padding: .5rem 3rem;
+    color: white;
+    transform: rotate(-45deg);
+    background-color: #db3434;
+    position: absolute;
+    z-index: 100;
+}
+
+.image-link {
+    display: block;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 0% 100%);   
+    overflow: hidden;
+}
+
+/* for some strange reason this has an effect on the width of the side navbar */
+/* fixed with flex: 1 */
+
+.img {
+    z-index: 0;
+    position: relative;
+    height: 200px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.card-description {
+    padding: .5rem;
+}
+
+.card-description h2 {
+    font-size: 22px;
+    margin: 0;
+    padding: 0;
+}
+
+.card-description h4 {
+    font-size: 16px;
+    color: #606060;
+    margin: 0;
+    padding: 0;
+}
+
+.brand-and-rating {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rating {
+    line-height: 16px;
+}
+
+i.fa {
+    display: inline-block;
+    font-size: 16px;
+    color: #606060;
+    margin: 0;
+    padding: 0;
+}
+
+.address {
+    font-size: 16px;
+    color: #606060;
+}
+
+.more-details {
+    background-color: white;
+    text-align: center;
+    padding: .3rem;
+}
+
+.more-details-link {
+    text-decoration: none;
+    color: #606060;
+    display: block;
+}
+
+@media(max-width: 767.98px) {
+    :host {
+        width: 100%;
+    }
+
+    .img {
+        height: 250px;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 991.98px) {
+    :host {
+        width: 50%;
+    }
+}
